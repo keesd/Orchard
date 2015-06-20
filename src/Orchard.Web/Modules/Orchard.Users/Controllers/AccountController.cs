@@ -141,7 +141,7 @@ namespace Orchard.Users.Controllers {
                 var user = _membershipService.CreateUser(new CreateUserParams(userName, password, email, null, null, false));
 
                 if (user != null) {
-                    if ( user.As<UserPart>().EmailStatus == UserStatus.Pending ) {
+                    if ( user.As<UserPart>().EmailStatus == EmailStatus.Pending ) {
                         var siteUrl = _orchardServices.WorkContext.CurrentSite.BaseUrl;
                         if(String.IsNullOrWhiteSpace(siteUrl)) {
                             siteUrl = HttpContext.Request.ToRootUrlString();

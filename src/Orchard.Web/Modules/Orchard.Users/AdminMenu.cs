@@ -7,7 +7,8 @@ namespace Orchard.Users {
         public Localizer T { get; set; }
         public string MenuName { get { return "admin"; } }
 
-        public void GetNavigation(NavigationBuilder builder) {
+        public void GetNavigation(NavigationBuilder builder)
+        {
             builder.AddImageSet("users")
                 .Add(T("Users"), "11",
                     menu => menu.Action("Index", "Admin", new { area = "Orchard.Users" })

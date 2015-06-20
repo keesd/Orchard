@@ -70,7 +70,7 @@ namespace Orchard.Users.Controllers {
                     users = users.Where(u => u.RegistrationStatus == UserStatus.Pending);
                     break;
                 case UsersFilter.EmailPending:
-                    users = users.Where(u => u.EmailStatus == UserStatus.Pending);
+                    users = users.Where(u => u.EmailStatus == EmailStatus.Pending);
                     break;
             }
 

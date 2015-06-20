@@ -87,12 +87,15 @@
     <Compile Include="Forms\SignInUserForm.cs" />
     <Compile Include="Forms\VerifyUserUnicityForm.cs" />
     <Compile Include="Forms\CreateUserForm.cs" />
+    <Compile Include="Handlers\PasswordPolicySettingsPartHandler.cs" />
     <Compile Include="Handlers\WorkflowUserEventHandler.cs" />
     <Compile Include="Migrations.cs" />
     <Compile Include="Events\UserContext.cs" />
     <Compile Include="Handlers\RegistrationSettingsPartHandler.cs" />
     <Compile Include="Events\IUserEventHandler.cs" />
+    <Compile Include="Models\EmailStatus.cs" />
     <Compile Include="Models\MessageTypes.cs" />
+    <Compile Include="Models\PasswordPolicySettingsPart.cs" />
     <Compile Include="Models\RegistrationSettingsPart.cs" />
     <Compile Include="Models\UserPart.cs" />
     <Compile Include="Handlers\UserPartHandler.cs" />
@@ -196,6 +199,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Placement.info" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Parts\Users.PasswordPolicySettings.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

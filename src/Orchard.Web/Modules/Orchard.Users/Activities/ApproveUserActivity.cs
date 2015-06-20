@@ -43,7 +43,7 @@ namespace Orchard.Users.Activities {
             var user = workflowContext.Content.As<UserPart>();
 
             user.RegistrationStatus = UserStatus.Approved;
-            user.EmailStatus = UserStatus.Approved;
+            user.EmailStatus = EmailStatus.Approved;
             _userEventHandlers.Approved(user);
 
             yield return T("Done");

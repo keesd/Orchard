@@ -76,12 +76,12 @@ namespace Orchard.Users.Services {
 
             if ( registrationSettings != null ) {
                 user.RegistrationStatus = registrationSettings.UsersAreModerated ? UserStatus.Pending : UserStatus.Approved;
-                user.EmailStatus = registrationSettings.UsersMustValidateEmail ? UserStatus.Pending : UserStatus.Approved;
+                user.EmailStatus = registrationSettings.UsersMustValidateEmail ? EmailStatus.Pending : EmailStatus.Approved;
             }
 
             if(createUserParams.IsApproved) {
                 user.RegistrationStatus = UserStatus.Approved;
-                user.EmailStatus = UserStatus.Approved;
+                user.EmailStatus = EmailStatus.Approved;
             }
 
             var userContext = new UserContext {User = user, Cancel = false, UserParameters = createUserParams};
@@ -146,7 +146,7 @@ namespace Orchard.Users.Services {
             if ( user == null || ValidatePassword(user.As<UserPart>(), password) == false )
                 return null;
 
-            if ( user.EmailStatus != UserStatus.Approved )
+            if ( user.EmailStatus != EmailStatus.Approved )
                 return null;
 
             if ( user.RegistrationStatus != UserStatus.Approved )

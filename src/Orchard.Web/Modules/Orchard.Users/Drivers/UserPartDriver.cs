@@ -13,7 +13,7 @@ namespace Orchard.Users.Drivers {
         protected override void Importing(UserPart part, ContentManagement.Handlers.ImportContentContext context) {
             part.Email = context.Attribute(part.PartDefinition.Name, "Email");
             part.EmailChallengeToken = context.Attribute(part.PartDefinition.Name, "EmailChallengeToken");
-            part.EmailStatus = (UserStatus)Enum.Parse(typeof(UserStatus), context.Attribute(part.PartDefinition.Name, "EmailStatus"));
+            part.EmailStatus = (EmailStatus)Enum.Parse(typeof(EmailStatus), context.Attribute(part.PartDefinition.Name, "EmailStatus"));
             part.HashAlgorithm = context.Attribute(part.PartDefinition.Name, "HashAlgorithm");
             part.NormalizedUserName = context.Attribute(part.PartDefinition.Name, "NormalizedUserName");
             part.Password = context.Attribute(part.PartDefinition.Name, "Password");

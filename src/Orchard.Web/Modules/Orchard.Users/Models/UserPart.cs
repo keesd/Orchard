@@ -57,7 +57,7 @@ namespace Orchard.Users.Models {
             set { Store(x => x.RegistrationStatus, value); }
         }
 
-        public UserStatus EmailStatus {
+        public EmailStatus EmailStatus {
             get { return Retrieve(x => x.EmailStatus); }
             set { Store(x => x.EmailStatus, value); }
         }
@@ -72,9 +72,29 @@ namespace Orchard.Users.Models {
             set { Store(x => x.LastLoginUtc, value); }
         }
 
-        public DateTime? LastLogoutUtc {
+
+        public DateTime? LastLogoutUtc
+        {
             get { return Retrieve(x => x.LastLogoutUtc); }
             set { Store(x => x.LastLogoutUtc, value); }
+        }
+
+        public DateTime? PasswordModifiedUtc
+        {
+            get { return Retrieve(x => x.LastLogoutUtc); }
+            set { Store(x => x.LastLogoutUtc, value); }
+        }
+
+        public DateTime? LastLoginAttemptUtc
+        {
+            get { return Retrieve(x => x.LastLoginAttemptUtc); }
+            set { Store(x => x.LastLoginAttemptUtc, value); }
+        }
+
+        public int FailedLoginAttempts
+        {
+            get { return Retrieve(x => x.FailedLoginAttempts); }
+            set { Store(x => x.FailedLoginAttempts, value); }
         }
     }
 }

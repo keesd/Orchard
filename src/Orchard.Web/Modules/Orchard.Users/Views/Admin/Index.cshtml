@@ -64,10 +64,10 @@
                     <input type="checkbox" value="true" name="@Html.NameOf(m => m.Users[userIndex].IsChecked)"/>
                 </td>
                 <td>
-                    @if (entry.User.RegistrationStatus == UserStatus.Approved && entry.User.EmailStatus == UserStatus.Approved) { 
+                    @if (entry.User.RegistrationStatus == UserStatus.Approved && entry.User.EmailStatus == EmailStatus.Approved) { 
                     <img class="icon" src="@Href("~/Modules/Orchard.Users/Content/Admin/images/online.gif") " alt="@T("Approved") " title="@T("User is approved") " /> 
                     } else { 
-                    <img class="icon" src="@Href("~/Modules/Orchard.Users/Content/Admin/images/offline.gif") " alt="@T("Moderated") " title="@if (entry.User.EmailStatus == UserStatus.Approved) { @T("User is moderated") } else { @T("E-mail validation is pending") }" />
+                    <img class="icon" src="@Href("~/Modules/Orchard.Users/Content/Admin/images/offline.gif") " alt="@T("Moderated") " title="@if (entry.User.EmailStatus == EmailStatus.Approved) { @T("User is moderated") } else { @T("E-mail validation is pending") }" />
                     } 
                     @Html.ActionLink(entry.User.UserName, "Edit", new { entry.User.Id }) 
                 </td>
@@ -82,7 +82,7 @@
                     } else {
                         @Html.ActionLink(T("Disable").ToString(), "Moderate", new { entry.User.Id }, new { itemprop = "UnsafeUrl" })
                     }
-                    @if (entry.User.EmailStatus == UserStatus.Pending) { <text>|</text>
+                    @if (entry.User.EmailStatus == EmailStatus.Pending) { <text>|</text>
                         @Html.ActionLink(T("Send challenge E-mail").ToString(), "SendChallengeEmail", new { entry.User.Id }, new { itemprop = "UnsafeUrl" })
                     } 
                 </td>

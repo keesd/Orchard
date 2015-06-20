@@ -14,10 +14,14 @@ namespace Orchard.Users.Models {
         public virtual string PasswordSalt { get; set; }
 
         public virtual UserStatus RegistrationStatus { get; set; }
-        public virtual UserStatus EmailStatus { get; set; }
+        public virtual EmailStatus EmailStatus { get; set; }
         public virtual string EmailChallengeToken { get; set; }
         public virtual DateTime? CreatedUtc { get; set; }
         public virtual DateTime? LastLoginUtc { get; set; }
         public virtual DateTime? LastLogoutUtc { get; set; }
+
+        public virtual DateTime? PasswordModifiedUtc { get; set; }
+        public virtual DateTime? LastLoginAttemptUtc { get; set; } 
+        public virtual int FailedLoginAttempts{get;set;}
     }
 }
