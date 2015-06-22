@@ -85,7 +85,7 @@ namespace Orchard.Users.Controllers {
                 var shape = _orchardServices.New.LogOn().Title(T("Log On").Text);
                 return new ShapeResult(this, shape); 
             }
-
+            
             _authenticationService.SignIn(user, rememberMe);
             _userEventHandler.LoggedIn(user);
 
@@ -105,7 +105,8 @@ namespace Orchard.Users.Controllers {
 
         int MinPasswordLength {
             get {
-                return _membershipService.GetSettings().MinRequiredPasswordLength;
+                var passwordPolicySettings = _orchardServices.WorkContext.CurrentSite.As<PasswordPolicySettingsPart>();
+                return passwordPolicySettings.MinPasswordLength;
             }
         }
 

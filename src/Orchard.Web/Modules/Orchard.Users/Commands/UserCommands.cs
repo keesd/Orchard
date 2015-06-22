@@ -1,17 +1,26 @@
 ﻿using Orchard.Commands;
 using Orchard.Security;
+using Orchard.Users.Models;
 using Orchard.Users.Services;
+using Orchard.ContentManagement;
 
 namespace Orchard.Users.Commands {
     public class UserCommands : DefaultOrchardCommandHandler {
+        private readonly IOrchardServices _orchardServices;
         private readonly IMembershipService _membershipService;
         private readonly IUserService _userService;
 
+        PasswordPolicySettingsPart _passwordPolicySettings;
+
         public UserCommands(
+            IOrchardServices orchardService,
             IMembershipService membershipService,
             IUserService userService) {
+                _orchardServices = orchardService;
             _membershipService = membershipService;
             _userService = userService;
+            _passwordPolicySettings = _orchardServices.WorkContext.CurrentSite.As<PasswordPolicySettingsPart>();
+
         }
 
         [OrchardSwitch]
@@ -30,6 +39,7 @@ namespace Orchard.Users.Commands {
         [CommandHelp("user create /UserName:<username> /Password:<password> /Email:<email>\r\n\t" + "Creates a new User")]
         [OrchardSwitches("UserName,Password,Email")]
         public void Create() {
+
 	        if (string.IsNullOrWhiteSpace(UserName)) {
 		        Context.Output.WriteLine(T("Username cannot be empty."));
 		        return;
@@ -56,7 +66,7 @@ namespace Orchard.Users.Commands {
 
         int MinPasswordLength {
             get {
-                return _membershipService.GetSettings().MinRequiredPasswordLength;
+                return _passwordPolicySettings.MinPasswordLength;
             }
         }
     }

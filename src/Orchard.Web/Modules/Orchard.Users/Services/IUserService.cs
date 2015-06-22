@@ -11,6 +11,8 @@ namespace Orchard.Users.Services {
         bool SendLostPasswordEmail(string usernameOrEmail, Func<string, string> createUrl);
         IUser ValidateLostPassword(string nonce);
 
+        
+
         string CreateNonce(IUser user, TimeSpan delay);
         bool DecryptNonce(string challengeToken, out string username, out DateTime validateByUtc);
     }

@@ -7,57 +7,65 @@ namespace Orchard.Users.Models {
             set { this.Store(x => x.Enabled, value); }
         }
 
-        public int MinPasswordLength {
+        public int MinPasswordLength{
             get { return this.Retrieve(x => x.MinPasswordLength); }
             set { this.Store(x => x.MinPasswordLength, value); }
         }
 
-        public int MinNonAlphaNummericChars {
-            get { return this.Retrieve(x => x.MinNonAlphaNummericChars); }
-            set { this.Store(x => x.MinNonAlphaNummericChars, value); }
-        }
-        
-        public int MinNummericChars {
-            get { return this.Retrieve(x => x.MinNummericChars); }
-            set { this.Store(x => x.MinNummericChars, value); }
+        public bool EnablePasswordReset{
+            get { return this.Retrieve(x => x.EnablePasswordReset); }
+            set { this.Store(x => x.EnablePasswordReset, value); }
         }
 
-        public int MinLowerCaseChars {
-            get { return this.Retrieve(x => x.MinLowerCaseChars); }
-            set { this.Store(x => x.MinLowerCaseChars, value); }
+        public bool RequireNummericChars{
+            get { return this.Retrieve(x => x.RequireNummericChars); }
+            set { this.Store(x => x.RequireNummericChars, value); }
+        }
+        public bool RequireSpecialChars{
+            get { return this.Retrieve(x => x.RequireSpecialChars); }
+            set { this.Store(x => x.RequireSpecialChars, value); }
         }
 
-        public int MinUpperCaseChars {
-            get { return this.Retrieve(x => x.MinUpperCaseChars); }
-            set { this.Store(x => x.MinUpperCaseChars, value); }
+        public bool RequireUpperAndLowerCaseChars {
+            get { return this.Retrieve(x => x.RequireUpperAndLowerCaseChars); }
+            set { this.Store(x => x.RequireUpperAndLowerCaseChars, value); }
         }
 
-        public bool AdminMustResetExpiredPassword {
-            get { return this.Retrieve(x => x.AdminMustResetExpiredPassword); }
-            set { this.Store(x => x.AdminMustResetExpiredPassword, value); }
+        public int PasswordExpirationInDays{
+            get { return this.Retrieve(x => x.PasswordExpirationInDays); }
+            set { this.Store(x => x.PasswordExpirationInDays, value); }
         }
 
-        public bool KeepPasswordHistory
-        {
+        public int ExpirationWarningDaysAhead{
+            get { return this.Retrieve(x => x.ExpirationWarningDaysAhead); }
+            set { this.Store(x => x.ExpirationWarningDaysAhead, value); }
+        }
+
+
+        public bool LockAccountOnPasswordExpiration {
+            get { return this.Retrieve(x => x.LockAccountOnPasswordExpiration); }
+            set { this.Store(x => x.LockAccountOnPasswordExpiration, value); }
+        }
+
+        public int PasswordAttemptWindow{
+            get { return this.Retrieve( x => x.PasswordAttemptWindow);}
+            set { this.Store(x => x.PasswordAttemptWindow, value); }
+        }
+
+
+        public bool KeepPasswordHistory{
             get { return this.Retrieve(x => x.KeepPasswordHistory); }
             set { this.Store(x => x.KeepPasswordHistory, value); }
         }
 
-        public bool AllowPreviousPasswords
-        {
+        public bool AllowPreviousPasswords{
             get { return this.Retrieve(x => x.AllowPreviousPasswords); }
             set { this.Store(x => x.AllowPreviousPasswords, value); }
         }
 
-        public int MaxLoginAttemptsBeforeLock
-        {
-            get { return this.Retrieve(x => x.MaxLoginAttemptsBeforeLock); }
-            set { this.Store(x => x.MaxLoginAttemptsBeforeLock, value); }
-        }
-
-        public bool EnableLostPassword {
-            get { return this.Retrieve(x => x.EnableLostPassword); }
-            set { this.Store(x => x.EnableLostPassword, value); }
+        public int MaxInvalidPasswordAttempts{
+            get { return this.Retrieve(x => x.MaxInvalidPasswordAttempts); }
+            set { this.Store(x => x.MaxInvalidPasswordAttempts, value); }
         }
 
     }
